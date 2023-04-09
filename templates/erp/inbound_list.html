@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 style="text-align: center">제품 리스트</h1>
+    <div class="col-sm-6" style="margin: auto; text-align: center">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>코드</th>
+                    <th>제품명</th>
+                    <th>크기</th>
+                    <th>가격</th>
+                    <th>재고 수량</th>
+                    <th>설명</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.code }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.size }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.stock_quantity }}</td>
+                    <td>{{ product.description }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-6" style="margin: auto; text-align: center">
+        <h2>제품 입고</h2>
+        <form method="post" action="/inbound_create/">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+{% endblock %}

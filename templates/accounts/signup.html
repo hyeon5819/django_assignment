@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2 style="text-align: center; margin-top: 50px">회원 가입</h2>
+    <div style="text-align: center;">
+        <form method="post">
+            {% csrf_token %}
+            <p><label for="{{ form.username.id_for_label }}" style="display: inline-block; width: 100px;">ID:</label> {{ form.username }}</p>
+            <p><label for="{{ form.email.id_for_label }}" style="display: inline-block; width: 100px;">E-mail:</label> {{ form.email }}</p>
+            <p><label for="{{ form.password1.id_for_label }}" style="display: inline-block; width: 100px;">PW:</label> {{ form.password1 }}</p>
+            <p><label for="{{ form.password2.id_for_label }}" style="display: inline-block; width: 100px;">PW 확인:</label> {{ form.password2 }}</p>
+            <p style="color: gray">*비밀번호는 8자 이상 설정해주세요*</p>
+            <button type="submit" class="btn btn-dark">회원가입</button>
+        </form>
+    </div>
+{% endblock %}

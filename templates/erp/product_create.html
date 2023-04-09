@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    제품 등록
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="wrap">
+            <h1 class="title-center" style="text-align: center; margin-top: 50px"> 제품 등록 </h1>
+            <form method="post" action="/product_create/" style="display: flex; flex-direction: column; justify-content: center">
+                {% csrf_token %}
+                    <label for="name">제품명</label>
+                    {{ form.name }}<br>
+                    <label for="size">사이즈</label>
+                    {{ form.size }}<br>
+                    <label for="price">입고 가격</label>
+                    {{ form.inbound_price }}<br>
+                    <label for="price">출고 가격</label>
+                    {{ form.price }}<br>
+                    <label for="description">제품 설명</label>
+                    {{ form.description }}
+                </div>
+                <hr>
+                <div style="text-align: center">
+                    <button type="submit" class="btn btn-dark">등록</button>
+                    <a href="/home" class="btn btn-secondary">메인으로 이동</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

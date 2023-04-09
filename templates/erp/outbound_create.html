@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    제품 출고
+{% endblock %}
+{% block content %}
+    <h1 style="text-align: center">제품 리스트</h1>
+    <div class="col-sm-6" style="margin: auto; text-align: center">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>코드</th>
+                    <th>제품명</th>
+                    <th>사이즈</th>
+                    <th>설명</th>
+                    <th>재고 수량</th>
+                    <th>입고 가격</th>
+                    <th>출고 가격</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.code }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.size }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.stock_quantity }}</td>
+                    <td>{{ product.inbound_price }}</td>
+                    <td>{{ product.price }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-6" style="margin: auto; text-align: center">
+        <h2>제품 출고</h2>
+        <form method="post">
+            {% csrf_token %}
+            <p style="margin-top: 20px">
+                <label for="{{ form.product.id_for_label }}">상품 선택:</label>
+                {{ form.product }}
+            </p>
+            <p><label for="{{ form.quantity.id_for_label }}">출고 수량:</label> {{ form.quantity.as_widget }} </p>
+            <button type="submit" class="btn btn-dark" style="margin-top: 10px">출고 처리</button>
+            <a href="/home" class="btn btn-secondary" style="margin-top: 10px">메인으로 이동</a>
+        </form>
+    </div>
+{% endblock %}

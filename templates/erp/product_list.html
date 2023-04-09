@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    제품 리스트
+{% endblock %}
+{% block content %}
+    <h1 style="text-align: center; margin-top: 50px">제품 리스트</h1>
+    <div class="mycards" style="margin-top: 50px">
+        <div class="row row-cols-1 row-cols-md-5 g-4" id="cards-box" style="justify-content: center; margin: auto 50px auto 50px">
+            {% for product in database_list %}
+            <div class="col">
+                <div class="card h-100">
+                    <img src=""
+                        class="card-img-top">
+                    <div class="card-body">
+                        <p style="font-size: 12px; margin-bottom: 5px">제품명</p>
+                        <p class="card-title">{{ product.name }}</p>
+                        <p style="font-size: 12px; margin-bottom: 5px">사이즈</p>
+                        <p class="card-text">{{ product.size }}</p>
+                        <p style="font-size: 12px; margin-bottom: 5px">가격</p>
+                        <p class="mycomment">{{ product.price }}</p>
+                        <p style="font-size: 12px; margin-bottom: 5px">제품 소개</p>
+                        <p class="card-text">{{ product.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <p style="text-align: center; margin-top: 20px"><a href="/home" class="btn btn-secondary">메인으로 이동</a></p>
+
+{% endblock %}
